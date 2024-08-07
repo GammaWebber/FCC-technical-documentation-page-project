@@ -1,0 +1,85 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+nav {
+    background-color: white;
+    width: 300px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+nav a {
+    display: block;
+    text-align: left;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    color: grey;
+}
+
+nav li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+header {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: blue;
+}
+
+nav header {
+    font-size: 25px;
+    text-align: center;
+}
+
+#main-doc {
+    margin-left: 320px;
+    margin-top: 40px;
+}
+
+.code {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #f7f7f7;
+    color: #4d4e53;
+    padding-left: 30px;
+}
+
+#Best_Practices {
+    margin-top: 25px;
+}
+
+@media screen and (max-width: 600px) {
+    nav {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    nav a {
+        float: left;
+        padding: 14px;
+    }
+    .content {
+        margin-left: 0;
+    }
+}
+
+.bold {
+    font-weight: bold;
+}

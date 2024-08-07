@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker Documentation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav id="navbar">
+        <header><h1>Docker Documentation</h1></header>
+        <ul>
+            <li><a class="nav-link" href="#Introduction">Introduction</a></li>
+            <li><a class="nav-link" href="#What_is_Docker">What is Docker?</a></li>
+            <li><a class="nav-link" href="#Installing_Docker">Installing Docker</a></li>
+            <li><a class="nav-link" href="#Docker_Architecture">Docker Architecture</a></li>
+            <li><a class="nav-link" href="#Working_with_Docker_Images">Working with Docker Images</a></li>
+            <li><a class="nav-link" href="#Running_Docker_Containers">Running Docker Containers</a></li>
+            <li><a class="nav-link" href="#Docker_Networking">Docker Networking</a></li>
+            <li><a class="nav-link" href="#Best_Practices">Best Practices</a></li>
+            <li><a class="nav-link" href="#Conclusion">Conclusion</a></li>
+        </ul>
+    </nav>
+    <main id="main-doc">
+        <section class="main-section" id="Introduction">
+            <h2>Introduction</h2>
+            <p>Docker is a platform that allows developers to automate the deployment of applications inside lightweight, portable containers. Containers package an application with all its dependencies, ensuring consistency across multiple environments. This guide provides an overview of Docker, its core concepts, and basic usage.</p>
+        </section>
+        <section class="main-section" id="What_is_Docker">
+            <h2>What is Docker?</h2>
+            <p>Docker is an open-source platform that enables developers to create, deploy, and manage containerized applications. Containers are lightweight, portable, and ensure that applications run consistently regardless of the environment.</p>
+        </section>
+        <section class="main-section" id="Installing_Docker">
+            <h2>Installing Docker</h2>
+            <ol>
+                <li>Windows and macOS: Download and install Docker Desktop from the <a href="https://www.docker.com/">Docker official website</a>.</li>
+                <li>Linux: Follow the installation instructions for your specific distribution (e.g., Ubuntu, CentOS).</li>
+            </ol>
+            <p class="bold">Basic Commands for Verification</p>
+            <p>After installation, verify that Docker is installed correctly by running:</p>
+            <div class="code">
+                <pre><code>docker --version</code></pre>
+                <pre><code>docker run hello-world</code></pre>
+            </div>
+        </section>
+        <section class="main-section" id="Docker_Architecture">
+            <h2>Docker Architecture</h2>
+            <p>Docker uses a client-server architecture comprising three main components:</p>
+            <ul>
+                <li>Docker Client: The interface through which users interact with Docker.</li>
+                <li>Docker Daemon: The background service responsible for building, running, and managing Docker containers.</li>
+                <li>Docker Registry: A repository for storing and distributing Docker images.</li>
+            </ul>
+        </section>
+        <section class="main-section" id="Working_with_Docker_Images">
+            <h2>Working with Docker Images</h2>
+            <p class="bold">Pulling Images</p>
+            <p>Download images from Docker Hub, the default registry.</p>
+            <div class="code">
+                <code>docker pull ubuntu</code>
+            </div>
+            <p class="bold">Building Images</p>
+            <p>Create a custom image using a Dockerfile.</p>
+            <p class="bold">Example Dockerfile:</p>
+            <div class="code">
+                <pre><code>FROM ubuntu:latest</code></pre>
+                <pre><code>RUN apt-get update && apt-get install -y nginx</code></pre>
+                <pre><code>CMD ["nginx", "-g", "daemon off;"]</code></pre>
+            </div>
+            <p>Build the image:</p>
+            <div class="code">
+                <code>docker build -t my-nginx-image .</code>
+            </div>
+        </section>
+        <section class="main-section" id="Running_Docker_Containers">
+            <h2>Running Docker Containers</h2>
+            <p class="bold">Starting a Container</p>
+            <p>Run a container from an image.</p>
+            <div class="code">
+                <code>docker run -d -p 80:80 my-nginx-image</code>
+            </div>
+            <p class="bold">Managing Containers</p>
+            <p>List running containers:</p>
+            <div class="code">
+                <code>docker ps</code>
+            </div>
+            <p>Stop a running container:</p>
+            <div class="code">
+                <pre><code>docker stop &lt;container_id&gt;</code></pre>
+            </div>
+            <p>Remove a container:</p>
+            <div class="code">
+                <pre><code>docker rm &lt;container_id&gt;</code></pre>
+            </div>
+        </section>
+        <section class="main-section" id="Docker_Networking">
+            <h2>Docker Networking</h2>
+            <p>Docker provides several networking options to manage communication between containers:</p>
+            <ul>
+                <li>Bridge Network: The default network driver; provides communication between containers on the same host.</li>
+                <li>Host Network: Directly uses the host's network stack.</li>
+                <li>Overlay Network: Used for communication between containers across different hosts in a swarm.</li>
+            </ul>
+            <p>Create a custom network:</p>
+            <div class="code">
+                <code>docker network create my-network</code>
+            </div>
+            <p>Run a container on the custom network:</p>
+            <div class="code">
+                <code>docker run -d --name my-container --network my-network my-nginx-image</code>
+            </div>
+        </section>
+        <section class="main-section" id="Best_Practices">
+            <h2>Best Practices</h2>
+            <ul>
+                <li>Keep Images Small: Minimize image size by using multi-stage builds and cleaning up unnecessary files.</li>
+                <li>Use .dockerignore: Exclude files and directories from the build context to optimize build performance.</li>
+                <li>Tag Images Properly: Use meaningful tags to version your images.</li>
+                <li>Secure Your Containers: Run containers with the least privilege and keep your Docker and host OS updated.</li>
+            </ul>
+        </section>
+        <section class="main-section" id="Conclusion">
+            <h2>Conclusion</h2>
+            <p>By mastering Docker, you can streamline your development workflow, ensure consistent environments, and simplify deployment processes. This guide covers the fundamental aspects of Docker, providing a solid foundation to start using containerization effectively.</p>
+        </section>
+    </main>
+</body>
+</html>
